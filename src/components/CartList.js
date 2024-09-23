@@ -17,8 +17,10 @@ export class CartList extends Component {
     this.productsListElement.innerHTML = ''
 
     // Iterate over cart items
-    const cartItems = this.state.cart.map(item => `<li>${item.title} - ${item.price}</li>`).join('')
-    this.productsListElement.innerHTML = cartItems
+    this.state.cart.forEach(item => {
+      const cartItemComponent = new CartItem({ item }).render();
+      this.productsListElement.appendChild(cartItemComponent);
+    });
   }
 
   render() {
