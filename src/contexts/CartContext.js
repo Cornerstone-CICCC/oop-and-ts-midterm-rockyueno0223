@@ -28,6 +28,18 @@ export class CartContext {
     this.listeners.forEach(listener => listener(this.cart))
   }
 
+  handleIncrement(item) {
+    item.quantity++
+    this.notifyListeners()
+  }
+
+  handleDecrement(item) {
+    if (item.quantity > 0) {
+      item.quantity--
+      this.notifyListeners()
+    }
+  }
+
   deleteItem(item) {
     this.cart = this.cart.filter(i => i !== item)
     this.notifyListeners()
