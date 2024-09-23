@@ -20,4 +20,9 @@ export class CartContext {
   notifyListeners() {
     this.listeners.forEach(listener => listener(this.cart))
   }
+
+  deleteItem(item) {
+    this.cart = this.cart.filter(i => i !== item)
+    this.notifyListeners()
+  }
 }

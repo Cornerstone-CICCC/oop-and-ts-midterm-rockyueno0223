@@ -18,7 +18,10 @@ export class CartList extends Component {
 
     // Iterate over cart items
     this.state.cart.forEach(item => {
-      const cartItemComponent = new CartItem({ item }).render();
+      const cartItemComponent = new CartItem({
+        item,
+        cartContext: this.props.cartContext,
+      }).render();
       this.productsListElement.appendChild(cartItemComponent);
     });
   }
