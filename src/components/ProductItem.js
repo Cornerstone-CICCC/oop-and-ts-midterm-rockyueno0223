@@ -3,6 +3,11 @@ import { Component } from "../common/Component.js";
 export class ProductItem extends Component {
   constructor(props){
     super(props)
+    this.handleAddToCart = this.handleAddToCart.bind(this)
+  }
+
+  handleAddToCart() {
+    this.props.cartContext.addItem(this.props.product)
   }
 
   render() {
@@ -23,8 +28,11 @@ export class ProductItem extends Component {
           <p>Rate: ${this.props.product.rating.rate} (${this.props.product.rating.count})</p>
           <p>$${this.props.product.price}</p>
         </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
       </div>
     `
+
+    productItem.querySelector('.add-to-cart-btn').addEventListener('click', this.handleAddToCart)
 
     return productItem;
   }

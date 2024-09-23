@@ -7,14 +7,15 @@ import { CartList } from "./CartList.js";
 export class App extends Component {
   render() {
     const appContainer = document.createElement('div')
-    appContainer.className = 'container'
     appContainer.innerHTML = `
       <div class='header-wrapper'></div>
-      <h1>Shop Website</h1>
-      <main class="flex">
-        <div class='product-list-wrapper w-3/4'></div>
-        <div class='cart-list-wrapper w-1/4'></div>
-      </main>
+      <div class="container mx-auto">
+        <h1>Shop Website</h1>
+        <main class="flex">
+          <div class='product-list-wrapper w-3/4'></div>
+          <div class='cart-list-wrapper w-1/4'></div>
+        </main>
+      </div>
       <div class='footer-wrapper'></div>
     `
 
@@ -22,7 +23,7 @@ export class App extends Component {
     const header = new Header().render()
     const footer = new Footer({ copyright: 'Rocky' }).render()
     const productList = new ProductList({ cartContext: this.props.cartContext })
-    const cartList = new CartList().render()
+    const cartList = new CartList({ cartContext: this.props.cartContext }).render()
 
     // Append components into DOM
     appContainer.querySelector('.header-wrapper').appendChild(header)
@@ -30,9 +31,6 @@ export class App extends Component {
     appContainer.querySelector('.cart-list-wrapper').appendChild(cartList)
 
     productList.mount(appContainer.querySelector('.product-list-wrapper'))
-
-    // const productListWrapper = appContainer.querySelector('.product-list-wrapper');
-    // productList.mount(productListWrapper);
 
     return appContainer
   }

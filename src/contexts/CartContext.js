@@ -1,13 +1,23 @@
 export class CartContext {
   constructor() {
-    this.carts = [];
+    this.cart = []
+    this.listeners = []
   }
 
-  addCart(cart) {
-    this.carts.push(cart);
+  addItem(item) {
+    this.cart.push(item)
+    this.notifyListeners()
   }
 
   getCart() {
-    return this.carts;
+    return this.cart
+  }
+
+  subscribe(listener) {
+    this.listeners.push(listener)
+  }
+
+  notifyListeners() {
+    this.listeners.forEach(listener => listener(this.cart))
   }
 }
