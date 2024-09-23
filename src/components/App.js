@@ -12,8 +12,8 @@ export class App extends Component {
       <div class='header-wrapper'></div>
       <h1>Shop Website</h1>
       <main class="flex">
-        <div class='product-list-wrapper'></div>
-        <div class='cart-list-wrapper'></div>
+        <div class='product-list-wrapper w-3/4'></div>
+        <div class='cart-list-wrapper w-1/4'></div>
       </main>
       <div class='footer-wrapper'></div>
     `
@@ -21,15 +21,18 @@ export class App extends Component {
     // Render components
     const header = new Header().render()
     const footer = new Footer({ copyright: 'Rocky' }).render()
-    const productList = new ProductList().render()
+    const productList = new ProductList({ cartContext: this.props.cartContext })
     const cartList = new CartList().render()
 
     // Append components into DOM
     appContainer.querySelector('.header-wrapper').appendChild(header)
     appContainer.querySelector('.footer-wrapper').appendChild(footer)
-
-    appContainer.querySelector('.product-list-wrapper').appendChild(productList)
     appContainer.querySelector('.cart-list-wrapper').appendChild(cartList)
+
+    productList.mount(appContainer.querySelector('.product-list-wrapper'))
+
+    // const productListWrapper = appContainer.querySelector('.product-list-wrapper');
+    // productList.mount(productListWrapper);
 
     return appContainer
   }
