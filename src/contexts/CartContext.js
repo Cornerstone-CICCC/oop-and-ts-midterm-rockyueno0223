@@ -5,7 +5,14 @@ export class CartContext {
   }
 
   addItem(item) {
-    this.cart.push(item)
+    const existingItem = this.cart.find(cartItem => cartItem.id === item.id)
+
+    if (existingItem) {
+        existingItem.quantity++
+    } else {
+        this.cart.push({ ...item, quantity: 1 })
+    }
+
     this.notifyListeners()
   }
 

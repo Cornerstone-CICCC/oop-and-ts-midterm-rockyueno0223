@@ -12,9 +12,11 @@ export class CartItem extends Component {
 
   render() {
     const cartItem = document.createElement('li');
+    cartItem.className = 'p-2'
     cartItem.innerHTML = `
-      <span>${this.props.item.title}</span> - <span>$${this.props.item.price}</span>
-      <button class="delete-btn">Remove</button>
+      <span class="font-semibold">${this.props.item.title}</span><br>
+      <span>$${this.props.item.price}</span> - <span>${this.props.item.quantity}</span><br>
+      <button class="delete-btn text-red-600">Remove</button>
     `
 
     const deleteBtn = cartItem.querySelector('.delete-btn');
