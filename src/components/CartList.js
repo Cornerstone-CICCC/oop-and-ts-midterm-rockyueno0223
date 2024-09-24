@@ -4,7 +4,7 @@ import { CartItem } from "./CartItem.js";
 export class CartList extends Component {
   constructor(props) {
     super(props)
-    this.state = { cart: [] }
+    this.state = { cart: [], totalQuantity: 0, totalPrice: 0.00 }
     this.updateCart = this.updateCart.bind(this)
     this.props.cartContext.subscribe(this.updateCart)
     this.productsListElement = null
@@ -24,13 +24,36 @@ export class CartList extends Component {
       }).render();
       this.productsListElement.appendChild(cartItemComponent);
     });
+
+    this.updateTotals()
+  }
+
+  updateTotals() {
+    const totalQuantity = this.state.cart.reduce((total, item) => total + item.quantity, 0)
+    const totalPrice = this.state.cart.reduce((total, item) => total + item.price * item.quantity, 0)
+
+    this.state.totalQuantity = totalQuantity
+    this.state.totalPrice = totalPrice.toFixed(2)
+
+    this.renderTotals()
+  }
+
+  renderTotals() {
+    const cartHeader = document.querySelector('.cart-header');
+    const totalPriceElement = document.querySelector('.total-price');
+
+    if (cartHeader && totalPriceElement) {
+      cartHeader.textContent = `Cart (${this.state.totalQuantity})`
+      totalPriceElement.textContent = `Total: $${this.state.totalPrice}`
+    }
   }
 
   render() {
     const cartElement = document.createElement('div')
     cartElement.innerHTML = `
-      <h3>Cart</h3>
+      <h3 class="cart-header">Cart (${this.state.totalQuantity})</h3>
       <ul></ul>
+      <span class="font-bold total-price">Total: $${this.state.totalPrice}</span>
     `
 
     this.productsListElement = cartElement.querySelector('ul')
