@@ -7,13 +7,13 @@ import { CartList } from "./CartList.js";
 export class App extends Component {
   render() {
     const appContainer = document.createElement('div')
+    appContainer.className = 'bg-[#FDF9F6]'
     appContainer.innerHTML = `
       <div class='header-wrapper'></div>
       <div class="container mx-auto">
-        <h1>Shop Website</h1>
-        <main class="flex">
-          <div class='product-list-wrapper w-3/4'></div>
-          <div class='cart-list-wrapper w-1/4'></div>
+        <main class="flex flex-col-reverse md:flex-row py-6">
+          <div class='product-list-wrapper w-full md:w-3/4'></div>
+          <div class='cart-list-wrapper w-full md:w-1/4'></div>
         </main>
       </div>
       <div class='footer-wrapper'></div>

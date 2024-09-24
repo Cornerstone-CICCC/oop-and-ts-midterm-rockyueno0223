@@ -21,7 +21,7 @@ export class ProductList extends Component {
 
   render() {
     const productList = document.createElement('div')
-    productList.className = 'flex flex-col'
+    productList.className = 'flex flex-col lg:flex-row flex-wrap'
     productList.innerHTML = ''
 
     this.state.products.forEach(product => {

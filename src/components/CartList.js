@@ -50,10 +50,11 @@ export class CartList extends Component {
 
   render() {
     const cartElement = document.createElement('div')
+    cartElement.className = 'px-4 py-6'
     cartElement.innerHTML = `
-      <h3 class="cart-header">Cart (${this.state.totalQuantity})</h3>
+      <h3 class="cart-header text-lg font-semibold">Cart (${this.state.totalQuantity})</h3>
       <ul></ul>
-      <span class="font-bold total-price">Total: $${this.state.totalPrice}</span>
+      <p class="total-price text-right font-semibold mt-2">Total: $${this.state.totalPrice}</p>
     `
 
     this.productsListElement = cartElement.querySelector('ul')

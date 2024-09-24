@@ -24,9 +24,17 @@ export class CartItem extends Component {
     const cartItem = document.createElement('li');
     cartItem.className = 'p-2'
     cartItem.innerHTML = `
-      <span class="font-semibold">${this.props.item.title}</span><br>
-      <span>$${this.props.item.price}</span> - <button class="decrement-btn">-</button><span>${this.props.item.quantity}</span><button class="increment-btn">+</button><br>
-      <button class="delete-btn text-red-600">Remove</button>
+      <span class="font-semibold">${this.props.item.title}</span>
+      <br>
+      <span class="flex flex-row justify-between my-1">
+        <span class="border-2 border-[#7FB77E] rounded-lg">
+          <button class="decrement-btn text-sm px-2">-</button>
+          <span class="px-1">${this.props.item.quantity}</span>
+          <button class="increment-btn text-sm px-2">+</button>
+        </span>
+        <span>$${this.props.item.price}</span>
+      </span>
+      <button class="delete-btn bg-red-600 text-white text-xs px-3 py-2 rounded hover:cursor-pointer">Remove</button>
     `
 
     const decrementBtn = cartItem.querySelector('.decrement-btn');
