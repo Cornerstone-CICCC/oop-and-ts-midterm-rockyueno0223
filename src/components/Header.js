@@ -3,14 +3,9 @@ import { Component } from "../common/Component.js";
 export class Header extends Component {
   render() {
     const header = document.createElement('header')
-    header.className = 'flex justify-between bg-slate-600 p-6'
+    header.className = 'flex justify-center bg-[#7FB77E] text-white p-5'
     header.innerHTML = `
-      <div>
-        <span>Logo</span>
-      </div>
-      <nav>
-        <li><a href="#">Home</a></li>
-      </nav>
+      <span class="font-serif text-xl">EC Website</span>
     `
 
     return header
