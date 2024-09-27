@@ -8,6 +8,7 @@ export class ProductItem extends Component {
 
   handleAddToCart() {
     this.props.cartContext.addItem(this.props.product)
+    new Toast("Product added to your cart", Toast.TYPE_DONE, Toast.TIME_NORMAL)
   }
 
   render() {

@@ -17,7 +17,10 @@ export class CartItem extends Component {
   }
 
   handleDelete() {
-    this.props.cartContext.deleteItem(this.props.item)
+    if (confirm("Are you ok to remove this item from cart?")) {
+      this.props.cartContext.deleteItem(this.props.item)
+      new Toast("The item was removed from your cart", Toast.TYPE_DONE, Toast.TIME_NORMAL)
+    }
   }
 
   render() {
