@@ -35,7 +35,7 @@ export class CartItem extends Component {
           <span class="px-1">${this.props.item.quantity}</span>
           <button class="increment-btn text-sm px-2">+</button>
         </span>
-        <span>$${this.props.item.price}</span>
+        <span>$${this.props.item.price * this.props.item.quantity}</span>
       </span>
       <button class="delete-btn bg-red-600 text-white text-xs px-3 py-2 rounded hover:cursor-pointer">Remove</button>
     `
